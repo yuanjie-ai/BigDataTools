@@ -1,2 +1,7 @@
-# 4.0-MyLearning
-MyLearning
+# Skill
+- R
+- Python
+- Scala
+- Spark
+- Sql
+- Git
