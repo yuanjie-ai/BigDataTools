@@ -1,7 +1,5 @@
-# Skill
-- R
-- Python
-- Scala
-- Spark
-- Sql
-- Git
+# Start
+- Jupyter
+```
+IPYTHON_OPTS="notebook" pyspark
+```
