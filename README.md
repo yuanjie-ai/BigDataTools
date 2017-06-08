@@ -1,5 +1,5 @@
 # Start
 - Jupyter
 ```
-IPYTHON_OPTS="notebook" pyspark
+PYSPARK_DRIVER_PYTHON_OPTS="notebook" pyspark-ipython
 ```
