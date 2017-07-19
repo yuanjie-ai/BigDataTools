@@ -3,8 +3,7 @@
 - [HBase](http://www.yiibai.com/hbase/)
 - [happybase](https://happybase.readthedocs.io/en/latest/user.html#working-with-tables)
 ```
-cd .\site-packages\thriftpy\parser\parser.py
-line 488  
+.\site-packages\thriftpy\parser\parser.py line 488  
 -  if url_scheme == '':
 +    if len(url_scheme) <= 1:
 ```
