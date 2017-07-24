@@ -4,11 +4,9 @@
         - 文件的大小
         - 文件的个数
         - splitsize的大小
-
         ```
-splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
+        splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
         ```
-
     - Reduce
     ```
     reducers = Math.min(maxReducers, totalInputFileSize/bytesPerReducer)
