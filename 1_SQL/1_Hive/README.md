@@ -1,5 +1,5 @@
-:facepunch: 
-# :rocket: Hive Learning
+
+# :rocket: Hive Learning :facepunch: 
 
 ---
 
