@@ -2,6 +2,7 @@
 ```
 //job name
 set mapreduce.job.name = JieYuan_job;
+set hive.exec.dynamic.partition.mode=nonstrict;
 set hive.exec.mode.local.auto=true; //当一个job满足如下条件会使用本地模式
 set hive.exec.parallel=true; //开启并行模式
 set hive.exec.parallel.thread.number=16; //最大64
