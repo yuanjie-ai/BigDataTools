@@ -8,7 +8,7 @@
         ```
 	splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
         ```
-	
+
     - Reduce
     ```
     reducers = Math.min(maxReducers, totalInputFileSize/bytesPerReducer)
