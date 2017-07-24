@@ -121,4 +121,12 @@
     - 说明： metastore默认的最大的处理线程数
 - hive.metastore.server.min.threads
     - 默认值：200
-    - 说明： metastore默认的最小的处理线程数## 标题 ##
+    - 说明： metastore默认的最小的处理线程数
+    
+    
+   
+# 参考
+- [Hive常用优化参数][1]
+
+
+  [1]: http://blog.csdn.net/q412774506/article/details/46998713
