@@ -83,10 +83,11 @@ set hive.exec.dynamic.partition.mode=nonstrict;
 - 小文件合并
     - 输入合并
     ```
-set hive.input.format = org.apache.hadoop.hive.ql.io.combinehiveinputformat;
-set mapred.max.split.size = 536870912;  //512MB
-set mapred.min.split.size = 134217728;  //128MB
+    set hive.input.format = org.apache.hadoop.hive.ql.io.combinehiveinputformat;
+    set mapred.max.split.size = 536870912;  //512MB
+    set mapred.min.split.size = 134217728;  //128MB
     ```
+    
     - 输出合并
         - Map-Only任务输出合并
         ```
