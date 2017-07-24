@@ -27,7 +27,7 @@
 - insert overwrite
 - insert directory
 ### Functions
-
+- [Functions][1]
 ---
 
 ## Hive调优
@@ -155,3 +155,6 @@ cteClause: cte_name AS (select statment)
 with q1 as (select id from src1 where name != 'xiaoming')
 select * from src2 t where t.id in (select id from q1)
 ```
+
+
+[1]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-Built-inFunctions
