@@ -147,12 +147,11 @@ set mapreduce.job.name = JieYuan_job
 ```
 - 分区限制时，涉及日期转换使用to_unix_timestamp方法，而不是unix_timestamp方法
 - 公共表表达式
-> 语法: 
-	```
-	withClause: cteClause (, cteClause)*
-	cteClause: cte_name AS (select statment)
-	```
-	```
-        with q1 as (select id from src1 where name != 'xiaoming')
-	select * from src2 t where t.id in (select id from q1)
-	```
+```
+withClause: cteClause (, cteClause)*
+cteClause: cte_name AS (select statment)
+```
+```
+with q1 as (select id from src1 where name != 'xiaoming')
+select * from src2 t where t.id in (select id from q1)
+```
