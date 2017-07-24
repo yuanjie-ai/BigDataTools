@@ -150,7 +150,8 @@ set mapreduce.job.name = JieYuan_job
 > 语法：
           withClause: cteClause (, cteClause)*
           cteClause: cte_name AS (select statment)
-示例：
+
+> 示例：
         with q1 as (select id from src1 where name != 'xiaoming')
         select *
         from src2 t where t.id in (select id from q1);
