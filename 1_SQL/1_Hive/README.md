@@ -1,6 +1,4 @@
-# Hive参考文档
-
-标签（空格分隔）： Hive
+# Hive小结
 
 ---
 
@@ -69,25 +67,26 @@ set hive.exec.dynamic.partition.mode=nonstrict;
         - 文件的大小
         - 文件的个数
         - splitsize的大小
-
-        ```
-splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
-        ```
+	```
+	splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
+	```
+	
     - Reduce
     ```
     reducers = Math.min(maxReducers, totalInputFileSize/bytesPerReducer)
     maxReducers = hive.exec.reducers.max默认999
     bytesPerReducer = hive.exec.reducers.bytes.per.reducer 
-    
     mapreduce.job.reduces
     ```
+    
 - 小文件合并
     - 输入合并
     ```
-set hive.input.format = org.apache.hadoop.hive.ql.io.combinehiveinputformat;
-set mapred.max.split.size = 536870912;  //512MB
-set mapred.min.split.size = 134217728;  //128MB
+    set hive.input.format = org.apache.hadoop.hive.ql.io.combinehiveinputformat;
+    set mapred.max.split.size = 536870912;  //512MB
+    set mapred.min.split.size = 134217728;  //128MB
     ```
+    
     - 输出合并
         - Map-Only任务输出合并
         ```
@@ -148,10 +147,11 @@ set mapreduce.job.name = JieYuan_job
 ```
 - 分区限制时，涉及日期转换使用to_unix_timestamp方法，而不是unix_timestamp方法
 - 公共表表达式
-> 语法：
-          withClause: cteClause (, cteClause)*
-          cteClause: cte_name AS (select statment)
-示例：
-        with q1 as (select id from src1 where name != 'xiaoming')
-        select *
-        from src2 t where t.id in (select id from q1);
+```
+withClause: cteClause (, cteClause)*
+cteClause: cte_name AS (select statment)
+```
+```
+with q1 as (select id from src1 where name != 'xiaoming')
+select * from src2 t where t.id in (select id from q1)
+```
