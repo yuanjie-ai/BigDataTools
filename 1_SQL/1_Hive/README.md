@@ -69,8 +69,9 @@ set hive.exec.dynamic.partition.mode=nonstrict;
         - splitsize的大小
 
         ```
-splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
+	splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
         ```
+	
     - Reduce
     ```
     reducers = Math.min(maxReducers, totalInputFileSize/bytesPerReducer)
@@ -78,6 +79,7 @@ splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
     bytesPerReducer = hive.exec.reducers.bytes.per.reducer 
     mapreduce.job.reduces
     ```
+    
 - 小文件合并
     - 输入合并
     ```
