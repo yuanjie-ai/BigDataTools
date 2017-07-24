@@ -3,8 +3,11 @@
 ---
 
 DDL：数据库模式定义语言，关键字：create
+
 DML：数据操纵语言，关键字：Insert、delete、update
+
 DCL：数据库控制语言，关键字：grant、remove
+
 DQL：数据库查询语言，关键字：select
 ---
 
