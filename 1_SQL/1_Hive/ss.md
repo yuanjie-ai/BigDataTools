@@ -6,7 +6,7 @@
         - splitsize的大小
 
         ```
-	splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
+splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
         ```
 
     - Reduce
