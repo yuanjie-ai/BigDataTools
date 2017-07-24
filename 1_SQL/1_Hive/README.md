@@ -17,7 +17,7 @@
 
 ---
 
-## HSQL
+## [HSQL][1]
 ### DDL
 - create 
 - alter 
@@ -27,18 +27,10 @@
 - insert overwrite
 - insert directory
 ### Functions
-- [Functions][1]
+- [Functions][2]
 ---
 
-## Hive调优
-
-```
-set mapred.job.tracker=local;
-set hive.exec.mode.local.auto=true;
-set hive.exec.parallel=true;
-set hive.exec.dynamic.partition.mode=nonstrict;
-```
-
+## [Hive调优][3]
 ### 内存溢出
 - map阶段
 > 解决：一般存在MapJoin，设置参数set hive.auto.convert.join = false转成reduce端的Common Join
@@ -156,5 +148,6 @@ with q1 as (select id from src1 where name != 'xiaoming')
 select * from src2 t where t.id in (select id from q1)
 ```
 
-
-[1]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-Built-inFunctions
+[1]: https://github.com/Jie-Yuan/2_Spark/blob/master/1_SQL/1_Hive/GettingStarted.md
+[2]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-Built-inFunctions
+[3]: https://github.com/Jie-Yuan/2_Spark/blob/master/1_SQL/1_Hive/ParameterOptimization.md
