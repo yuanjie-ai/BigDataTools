@@ -7,9 +7,11 @@
         ```
 	splitSize = Math.max(minSize, Math.min(maxSize, blockSize))
         ```
+	
     - Reduce
     ```
     reducers = Math.min(maxReducers, totalInputFileSize/bytesPerReducer)
     maxReducers = hive.exec.reducers.max默认999
     bytesPerReducer = hive.exec.reducers.bytes.per.reducer 
     mapreduce.job.reduces
+    ```
