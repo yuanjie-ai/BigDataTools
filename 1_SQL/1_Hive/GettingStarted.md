@@ -1,4 +1,4 @@
-# Hive快速入门
+# [Hive快速入门][2]
 
 ---
 
@@ -153,3 +153,4 @@ SELECT a.key, a.val FROM a LEFT SEMI JOIN b on (a.key = b.key)
 
 
   [1]: http://www.aboutyun.com/thread-7316-1-1.html
+  [2]: https://cwiki.apache.org/confluence/display/Hive/GettingStarted
