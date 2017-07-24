@@ -26,8 +26,8 @@
 - load
 - insert overwrite
 - insert directory
-### Functions
-- [Functions][2]
+### DQL
+- select
 ---
 
 ## [Hive调优][3]
@@ -149,5 +149,4 @@ select * from src2 t where t.id in (select id from q1)
 ```
 
 [1]: https://github.com/Jie-Yuan/2_Spark/blob/master/1_SQL/1_Hive/GettingStarted.md
-[2]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-Built-inFunctions
 [3]: https://github.com/Jie-Yuan/2_Spark/blob/master/1_SQL/1_Hive/ParameterOptimization.md
