@@ -1,11 +1,15 @@
-# Hive快速入门
+# [Hive快速入门][2]
 
 ---
 
 DDL：数据库模式定义语言，关键字：create
+
 DML：数据操纵语言，关键字：Insert、delete、update
+
 DCL：数据库控制语言，关键字：grant、remove
+
 DQL：数据库查询语言，关键字：select
+
 ---
 
 # 常用
@@ -150,3 +154,4 @@ SELECT a.key, a.val FROM a LEFT SEMI JOIN b on (a.key = b.key)
 
 
   [1]: http://www.aboutyun.com/thread-7316-1-1.html
+  [2]: https://cwiki.apache.org/confluence/display/Hive/GettingStarted
