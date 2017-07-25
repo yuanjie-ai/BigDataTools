@@ -10,6 +10,7 @@ DQL：数据库查询语言，关键字：select
 
 # 常用
 ```
+TRUNCATE TABLE tablename;
 SHOW TABLES LIKE '*name*';
 SHOW PARTITIONS table_name;
 DESC table_name;
