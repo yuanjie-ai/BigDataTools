@@ -2,7 +2,8 @@
 
 ---
 - [Scala][1]
-  - ![DataType][2]
+  - DataType
+  ![DataType][2]
 ---
 
 - Jupyter
