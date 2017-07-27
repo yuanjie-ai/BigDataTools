@@ -72,10 +72,15 @@ CREATE TABLE empty_table LIKE fbidm.yuanjie_test
     ```
     ALTER TABLE table_name ADD COLUMNS(new_col2 INT)
     ALTER TABLE table_name ADD COLUMNS(new_col2 INT COMMENT 'add columns')
-    ALTER TABLE table_name ADD|REPLACE COLUMNS (col_name data_type [COMMENT col_comment], ...)
+    ALTER TABLE table_name ADD COLUMNS(col_name data_type [COMMENT col_comment], ...)
     ```
     
-    - 修改列的名字、类型、位置、注释
+    - REPLACE COLUMNS: 对应列覆盖修改
+    ```
+    ALTER TABLE table_name REPLACE COLUMNS(foo INT COMMENT 'only keep the first column')
+    ```
+    
+    - 修改列的名字、类型、位置、注释
     ```
     ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type [COMMENT col_comment] [FIRST|AFTER column_name]
     ```
