@@ -96,6 +96,7 @@ df.select('*', F.coalesce(df["a"], F.lit(0.0))).show()
 +----+----+----------------+
 ```
 - CASE: spark when(condition, T value).otherwise(F value)
+
 > 简单Case函数的写法相对比较简洁，但是和Case搜索函数相比，功能方面会有些限制，比如写判断式。 
 还有一个需要注意的问题，Case函数只返回第一个符合条件的值，剩下的Case部分将会被自动忽略
 
