@@ -21,6 +21,7 @@ df.select(F.current_date(), F.current_timestamp()).show(1,False)
     ```
     unix_timestamp(timestamp=None, format='yyyy-MM-dd HH:mm:ss')
     ```
+    
     - 当前字段转时间戳
     ```
     unix_timestamp(timestamp='字段', format='yyyy-MM-dd HH:mm:ss')
