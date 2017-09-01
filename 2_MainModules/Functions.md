@@ -18,14 +18,17 @@ df.select(F.current_date(), F.current_timestamp()).show(1,False)
 +--------------+-----------------------+
 ```
     - 当前时间戳
+    
     ```
     unix_timestamp(timestamp=None, format='yyyy-MM-dd HH:mm:ss')
     ```
     
     - 当前字段转时间戳
+    
     ```
     unix_timestamp(timestamp='字段', format='yyyy-MM-dd HH:mm:ss')
     ```
+    
 - 时间戳转日期字符串（与上反向）
 ```
 from_unixtime(timestamp='字段', format='yyyy-MM-dd HH:mm:ss')
