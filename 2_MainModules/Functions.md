@@ -101,6 +101,7 @@ df.select('*', F.coalesce(df["a"], F.lit(0.0))).show()
 还有一个需要注意的问题，Case函数只返回第一个符合条件的值，剩下的Case部分将会被自动忽略
 
     - 简单Case函数
+    
     ```
     CASE a WHEN b THEN c ELSE c END
     
@@ -111,6 +112,7 @@ df.select('*', F.coalesce(df["a"], F.lit(0.0))).show()
     ```
     
     - Case搜索函数
+    
     ```
     CASE WHEN a THEN b ELSE c END
     
