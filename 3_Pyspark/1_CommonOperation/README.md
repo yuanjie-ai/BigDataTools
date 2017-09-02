@@ -22,3 +22,13 @@ m.transform(test2).show()
 |  4|       0.0|     0|
 +---+----------+------+
 ```
+```
+# freqItems
+df = spark.createDataFrame([(1, 2, 3) if i % 2 == 0 else (i, 2 * i, i % 4) for i in range(100)], ["a", "b", "c"])
+freq = df.freqItems(["a", "b", "c"], 0.4)
+freq.show()
+# 组合的频繁项
+freq = df.withColumn('ab', F.struct('a', 'b')).freqItems(['ab'], 0.4)
+freq.show()
+df.withColumn('ab', array('a', 'b')).freqItems(['ab'], 0.4).show()
+```
