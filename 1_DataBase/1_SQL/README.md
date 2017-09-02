@@ -1,6 +1,6 @@
 # Hive快速入门
 ---
-### [Hive内置函数官方][https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF]
+### [Hive内置函数官方][2]
 ### General Info
 
 For the latest information about Hive, please visit out website at:
@@ -174,4 +174,4 @@ SELECT a.key, a.val FROM a LEFT SEMI JOIN b on (a.key = b.key)
 
 
   [1]: http://www.aboutyun.com/thread-7316-1-1.html
-  [2]: https://cwiki.apache.org/confluence/display/Hive/GettingStarted
+  [2]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF
