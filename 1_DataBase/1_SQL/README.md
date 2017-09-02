@@ -1,5 +1,6 @@
-# [Hive快速入门][2]
+# Hive快速入门
 ---
+### [Hive内置函数官方][https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF]
 ### General Info
 
 For the latest information about Hive, please visit out website at:
