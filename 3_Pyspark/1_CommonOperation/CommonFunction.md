@@ -1,13 +1,13 @@
 # [Functions][1]
 
 ---
-# 关系运算
-# 数学运算
-# 逻辑运算
-# 数值运算
+## 关系运算
+## 数学运算
+## 逻辑运算
+## 数值运算
 ---
 
-# 日期函数
+## 日期函数
 - 当前日期
 ```
 df.select(F.current_date(), F.current_timestamp()).show(1,False)
@@ -68,7 +68,7 @@ from_unixtime(timestamp='字段', format='yyyy-MM-dd HH:mm:ss')
     - datediff(end, start)
     - to_date(col)
 
-# 条件函数
+## 条件函数
 - if(Test Condition, True Value, False Value )
     - R: ifelse
     - python: np.where
@@ -123,7 +123,7 @@ df.select('*', F.coalesce(df["a"], F.lit(0.0))).show()
     
 ---
 
-# 字符串函数
+## 字符串函数
 - length(col)
 - reverse(col)
 - concat(*cols)
@@ -192,7 +192,7 @@ df.selectExpr("find_in_set('a', 'b,a')").show()
 ```
 ---
 
-# 集合函数
+## 集合函数
 - histogram_numeric: 直方图
 ```
 spark.range(10).selectExpr("histogram_numeric(id, 5)").show(1,False)
@@ -216,19 +216,19 @@ spark.range(10).selectExpr("histogram_numeric(id, 5)").show(1,False)
 - stddev_samp(col): 样本标准偏差
 ---
 
-# 复合类型构建操作
+## 复合类型构建操作
 - Map类型构建: map
 - Struct类型构建: struct
 - array类型构建: array
 ---
 
-# 复杂类型访问操作
+## 复杂类型访问操作
 - array类型访问: A[n]
 - map类型访问: M[key]
 - struct类型访问: S.x
 ---
 
-# 复杂类型长度统计函数
+## 复杂类型长度统计函数
 - Map类型长度函数: size(Map<K.V>)
 - array类型长度函数: size(Array<T>)
 - 类型转换函数: cast(expr as <type>)
