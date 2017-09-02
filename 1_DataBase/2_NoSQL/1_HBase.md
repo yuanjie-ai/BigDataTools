@@ -1,6 +1,6 @@
 # :rocket: [HBaseLearning][1] :facepunch:
 ---
-## [Happybase]
+## [Happybase][2]
 ```
 .\site-packages\thriftpy\parser\parser.py line 488  
 -  if url_scheme == '':
@@ -71,3 +71,4 @@ connection.delete_table('ns_firs:yuanjie_table', disable = True)
 ---
 
 [1]: http://www.yiibai.com/hbase/
+[2]: http://happybase.readthedocs.io/en/latest/
