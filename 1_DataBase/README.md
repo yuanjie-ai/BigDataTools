@@ -1,6 +1,8 @@
 # :rocket: DataBaseLearning :facepunch:
 ---
 ## SQL
+- [Hive][1]
+
 ---
 ## NoSQL
 - [HBase][6]
@@ -23,6 +25,7 @@
 
 
 ---
+[1]: https://github.com/Jie-Yuan/0_BigData/blob/master/1_DataBase/1_SQL/README.md
 
 
 [6]: https://github.com/Jie-Yuan/0_BigData/blob/master/1_DataBase/2_NoSQL/1_HBase.md
