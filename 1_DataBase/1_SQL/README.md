@@ -74,13 +74,12 @@ CREATE TABLE empty_table LIKE fbidm.yuanjie_test
     ALTER TABLE table_name ADD COLUMNS(new_col2 INT COMMENT 'add columns')
     ALTER TABLE table_name ADD COLUMNS(col_name data_type [COMMENT col_comment], ...)
     ```
-    
-    - REPLACE COLUMNS: 对应列覆盖修改
-    ```
+    - REPLACE COLUMNS: 对应列覆盖修改
+    ```
     ALTER TABLE table_name REPLACE COLUMNS(foo INT COMMENT 'only keep the first column')
     ```
     
-    - 修改列的名字、类型、位置、注释
+    - 修改列的名字、类型、位置、注释
     ```
     ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type [COMMENT col_comment] [FIRST|AFTER column_name]
     ```
@@ -120,13 +119,14 @@ ALTER TABLE name REPLACE COLUMNS (col_spec[, col_spec ...])
     
     - 自动分区模式
     ```
-    INSERT OVERWRITE TABLE tablename PARTITION (partcol1[=val1], partcol2[=val2] ...)
+    INSERT OVERWRITE TABLE tablename PARTITION (partcol1[=val1],       partcol2[=val2] ...)
     select_statement FROM from_statement
     ```
+    
 ---
 
 # DQL
-- [functions][1]
+- [CommonFunctions][1]
 > Hive只支持等值连接（equality joins）、外连接（outer joins）和（left semi joins）；
 Hive不支持所有非等值的连接，因为非等值连接非常难转化到map/reduce任务；
 LEFT，RIGHT和FULL OUTER关键字用于处理join中空记录的情况；
