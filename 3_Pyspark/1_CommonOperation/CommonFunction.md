@@ -1,4 +1,4 @@
-# [Functions][1]
+# [CommonFunction][1]
 
 ---
 ## 关系运算
