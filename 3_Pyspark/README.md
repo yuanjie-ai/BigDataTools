@@ -10,6 +10,7 @@
 ---
 ## 常用算法
 - [ALS][5]
+- [FPGrowth][6]
 ---
 
 
@@ -35,3 +36,4 @@
 [3]: https://github.com/Jie-Yuan/3_SpecialModule/blob/master/5_Spark-Hive_UDFs/WindowFunctions.md
 [4]: https://github.com/Jie-Yuan/3_SpecialModule/tree/master/5_Spark-Hive_UDFs
 [5]: http://nbviewer.jupyter.org/github/Jie-Yuan/0_BigData/blob/master/3_Pyspark/2_PysparkML/ALS.ipynb
+[6]: https://github.com/Jie-Yuan/0_BigData/blob/master/3_Pyspark/2_PysparkML/FPGrowth.md
