@@ -1,18 +1,18 @@
 # [Hive快速入门][2]
 ---
-General Info
+### General Info
 
 For the latest information about Hive, please visit out website at:
 
 http://hive.apache.org/
 
-Getting Started
+### Getting Started
 
-Installation Instructions and a quick tutorial: https://cwiki.apache.org/confluence/display/Hive/GettingStarted
+- Installation Instructions and a quick tutorial: https://cwiki.apache.org/confluence/display/Hive/GettingStarted
 
-A longer tutorial that covers more features of HiveQL: https://cwiki.apache.org/confluence/display/Hive/Tutorial
+- A longer tutorial that covers more features of HiveQL: https://cwiki.apache.org/confluence/display/Hive/Tutorial
 
-The HiveQL Language Manual: https://cwiki.apache.org/confluence/display/Hive/LanguageManual
+- The HiveQL Language Manual: https://cwiki.apache.org/confluence/display/Hive/LanguageManual
 
 ---
 
