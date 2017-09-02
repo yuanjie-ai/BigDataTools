@@ -1,2 +1,0 @@
-# :rocket: WindowFunction :facepunch:
----
