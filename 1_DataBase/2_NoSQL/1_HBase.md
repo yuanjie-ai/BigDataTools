@@ -1,4 +1,11 @@
-# :rocket: HBase Learning :facepunch:
+# :rocket: [HBaseLearning][1] :facepunch:
+---
+## [Happybase]
+```
+.\site-packages\thriftpy\parser\parser.py line 488  
+-  if url_scheme == '':
++  if len(url_scheme) <= 1:
+```
 ---
 ## 建表
 ```
@@ -61,3 +68,6 @@ connection.delete_table('ns_firs:yuanjie_table', disable = True)
 - tab.row
 - tab.rows
 - tab.scan
+---
+
+[1]: http://www.yiibai.com/hbase/
