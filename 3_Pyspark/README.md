@@ -1,7 +1,9 @@
 # :rocket: PysparkLearning :facepunch:
 ---
 ## [常用操作][11]
+- [数据重塑][13]
 - [返回布尔型][12]
+
 ---
 ## 常用函数
 - [基础函数][1]
@@ -33,6 +35,7 @@
 ---
 [11]: https://github.com/Jie-Yuan/0_BigData/tree/master/3_Pyspark/1_CommonOperation
 [12]: https://github.com/Jie-Yuan/0_BigData/blob/master/3_Pyspark/1_CommonOperation/ReturnBoolean.md
+[13]: https://github.com/Jie-Yuan/0_BigData/blob/master/3_Pyspark/1_CommonOperation/DataReshape.md
 
 [21]: http://nbviewer.jupyter.org/github/Jie-Yuan/0_BigData/blob/master/3_Pyspark/2_PysparkML/ALS.ipynb
 [22]: https://github.com/Jie-Yuan/0_BigData/blob/master/3_Pyspark/2_PysparkML/FPGrowth.md
