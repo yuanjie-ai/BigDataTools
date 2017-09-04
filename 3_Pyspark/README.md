@@ -33,7 +33,6 @@
 ---
 [11]: https://github.com/Jie-Yuan/0_BigData/tree/master/3_Pyspark/1_CommonOperation
 [12]: https://github.com/Jie-Yuan/0_BigData/blob/master/3_Pyspark/1_CommonOperation/ReturnBoolean.md
-
 ---
 [21]: http://nbviewer.jupyter.org/github/Jie-Yuan/0_BigData/blob/master/3_Pyspark/2_PysparkML/ALS.ipynb
 [22]: https://github.com/Jie-Yuan/0_BigData/blob/master/3_Pyspark/2_PysparkML/FPGrowth.md
