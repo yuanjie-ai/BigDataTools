@@ -32,3 +32,4 @@ freq = df.withColumn('ab', F.struct('a', 'b')).freqItems(['ab'], 0.4)
 freq.show()
 df.withColumn('ab', array('a', 'b')).freqItems(['ab'], 0.4).show()
 ```
+- F.ignore_unicode_prefix: 去u
