@@ -1,6 +1,16 @@
 # :rocket: Deploy :facepunch:
 ---
-## Spark
+## IDE 任务结构
+- Data.zip
+    - data.csv
+    - ...
+- MySparkOnline.zip
+    - MyPackage
+        -  SparkSession
+        -  UDF
+    - PypiPackage: jieba(举例)
+---
+## IDE spark-submit
 - spark-submit [options] <app jar | python file> [app options]
 > spark-submit --help
 ```
@@ -18,12 +28,4 @@ cmd = \
 os.system(cmd + '__main__.py')
 ```
 
-## IDE spark任务结构
-- Data.zip
-    - data.csv
-    - ...
-- MySparkOnline.zip
-    - MyPackage
-        -  SparkSession
-        -  UDF
-    - PypiPackage: jieba(举例)
+
