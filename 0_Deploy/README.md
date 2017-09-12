@@ -13,8 +13,17 @@ cmd = \
 --executor-memory 10G \
 --executor-cores 2 \
 --driver-memory 3G \
---py-files Test.zip,idf.txt \
-__main__.py"                         # 注意空格
-#os.system(cmd + 'idf.py')
-os.system(cmd + 'PyMain.py')
+--py-files MySparkOnline.zip,Data.zip "                          # 注意空格
+
+os.system(cmd + '__main__.py')
 ```
+
+## IDE spark任务结构
+- Data.zip
+    - data.csv
+    - ...
+- MySparkOnline.zip
+    - MyPackage
+        -  SparkSession
+        -  UDF
+    - PypiPackage: jieba(举例)
