@@ -1,6 +1,6 @@
 # :rocket: Deploy :facepunch:
 ---
-## IDE 任务结构
+## IDE spark任务结构
 - Data.zip
     - data.csv
     - ...
