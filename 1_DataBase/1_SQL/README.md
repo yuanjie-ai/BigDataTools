@@ -29,6 +29,8 @@ DQL：数据库查询语言，关键字：select
 
 # 常用
 ```
+DROP TABLE IF EXISTS fbidm.yuanjie_test;
+CREATE TABLE IF NOT EXISTS fbidm.yuanjie_test
 TRUNCATE TABLE tablename;
 SHOW TABLES LIKE '*name*';
 SHOW PARTITIONS table_name;
