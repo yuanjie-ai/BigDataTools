@@ -39,6 +39,11 @@ DESC FORMATTED table_name;
 SHOW FUNCTIONS;
 DESC FUNCTION concat;
 SELECT col1[0], col2['b'], col3.c FROM complex; //查看数组、map、结构
+FROM temp INSERT overwrite TABLE fbidm.yuanjie_test PARTITION(stat_date='2017-09-14') SELECT id
+
+# 动态分区
+set hive.exec.dynamic.partition.mode = nonstrict;
+FROM temp INSERT overwrite TABLE fbidm.yuanjie_test PARTITION(stat_date) SELECT *
 ```
 ---
 
