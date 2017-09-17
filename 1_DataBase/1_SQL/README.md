@@ -44,6 +44,12 @@ FROM temp INSERT overwrite TABLE fbidm.yuanjie_test PARTITION(stat_date='2017-09
 # 动态分区
 set hive.exec.dynamic.partition.mode = nonstrict;
 FROM temp INSERT overwrite TABLE fbidm.yuanjie_test PARTITION(stat_date) SELECT *
+
+WITH
+t1 AS (),
+t2 AS (),
+...
+select * from t1/t2
 ```
 ---
 
