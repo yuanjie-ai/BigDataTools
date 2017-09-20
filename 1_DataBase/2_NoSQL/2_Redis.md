@@ -3,7 +3,7 @@
 ## [Redis常用操作][2]
 ```
 import redis
-pool = redis.ConnectionPool(host='10.37.107.218', port=6379, db=0)
+pool = redis.ConnectionPool(host='10.10.10.10', port=6379, db=0)
 r = redis.Redis(connection_pool = pool)
 ```
 ## 插
