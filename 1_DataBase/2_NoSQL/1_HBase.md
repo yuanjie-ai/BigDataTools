@@ -10,7 +10,7 @@
 ## 建表
 ```
 import happybase
-connection =  happybase.Connection('namenode1-sit.cnsuning.com', 9090)
+connection =  happybase.Connection('xx.com', 9090)
 families = {'f': dict()}
 connection.create_table('ns_firs:yuanjie_table', families=families)
 tab = connection.table('ns_firs:yuanjie_table')
