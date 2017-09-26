@@ -2,7 +2,7 @@
 
 ---
 - [spark_sklearn][1]
-
+- [spark-deep-learning][2]
 
 
 
@@ -25,3 +25,4 @@
 
 ---
 [1]: https://github.com/databricks/spark-sklearn
+[2]: https://github.com/databricks/spark-deep-learning
