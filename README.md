@@ -1,5 +1,5 @@
 # :rocket: Spark Tutorial :facepunch:
----·
+---
 - [Scala][1]
 - [JRE][3]
 ![DataType][2]
