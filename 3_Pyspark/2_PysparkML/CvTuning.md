@@ -36,11 +36,13 @@ class CvModel(object):
 
     @staticmethod
     def rf():
-        rf = RandomForestClassifier()
-        estimatorParamMaps_ = ParamGridBuilder().addGrid(rf.maxBins, [24]) \
-            .addGrid(rf.maxDepth, [4]) \
-            .addGrid(rf.impurity, ["entropy"]) \
-            .addGrid(rf.numTrees, [15]) \
+        rf = RandomForestClassifier(seed=0)
+        estimatorParamMaps_ = ParamGridBuilder() \
+            .addGrid(rf.maxBins, [24, 28, 32, 36]) \
+            .addGrid(rf.maxDepth, [4, 6, 8, 10]) \
+            .addGrid(rf.impurity, ["entropy", "gini"]) \
+            .addGrid(rf.numTrees, [15, 20, 25, 30]) \
             .build()
         return rf, estimatorParamMaps_
+
 ```
