@@ -1,6 +1,4 @@
-# Spark数据挖掘套路：RF示例
-
-标签（空格分隔）： Spark 机器学习 建模流程
+<h1 align = "center">:rocket: Spark建模流程 :facepunch:</h1>
 
 ---
 
