@@ -1,4 +1,5 @@
 ```python
+
 class SparkML(object):
     def __init__(self):
         pass
@@ -37,12 +38,13 @@ class CvModel(object):
     @staticmethod
     def rf():
         rf = RandomForestClassifier(seed=0)
-        estimatorParamMaps_ = ParamGridBuilder() \
+        grid = ParamGridBuilder() \
             .addGrid(rf.maxBins, [24, 28, 32, 36]) \
             .addGrid(rf.maxDepth, [4, 6, 8, 10]) \
             .addGrid(rf.impurity, ["entropy", "gini"]) \
             .addGrid(rf.numTrees, [15, 20, 25, 30]) \
             .build()
-        return rf, estimatorParamMaps_
+        return rf, grid
+
 
 ```
