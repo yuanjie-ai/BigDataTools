@@ -9,7 +9,8 @@
 ```
 PYSPARK_DRIVER_PYTHON_OPTS="notebook" pyspark
 ```
-
+---
+- 表很大的话cache反而性能会更差
 ---
 [1]: https://github.com/mbonaci/scala
 [2]: https://raw.githubusercontent.com/mbonaci/scala/master/resources/Scala-class-hierarchy.gif
