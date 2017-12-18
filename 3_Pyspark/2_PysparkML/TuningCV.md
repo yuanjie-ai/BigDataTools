@@ -24,7 +24,7 @@ class SparkML(object):
     @staticmethod
     def vectorAssembler(df, _id, _label):
         df = df.withColumnRenamed(_label, 'label').withColumnRenamed(_id, '_id')
-        X_name = filter(lambda x: x != _id and x != _label, df.columns)
+        X_name = [i for i in df.columns if i not in (_id, _label)]
         df = VectorAssembler(inputCols=X_name, outputCol='features') \
             .transform(df) \
             .select('_id', 'features', 'label')
