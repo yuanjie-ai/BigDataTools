@@ -1,4 +1,11 @@
 # :rocket: PysparkLearning :facepunch:
+
+---
+```python
+# Array、Vector互转
+arrayToVector = udf(lambda x: Vectors.dense(x), VectorUDT())
+vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
+```
 ---
 ## [常用操作][11]
 - [数据重塑][13]
