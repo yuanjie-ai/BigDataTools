@@ -1,6 +1,7 @@
 ## 预处理模块
 ```python
 class SparkPreprocessing(object):
+
     def __init__(self, df, _id='id', _label='label'):
         self.df = df
         self.id_label = [_id, _label]
