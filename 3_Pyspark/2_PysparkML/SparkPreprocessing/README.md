@@ -7,25 +7,26 @@ class SparkPreprocessing(object):
         _ = np.array(df.groupBy(_label).count().collect())
         self.Y_true = [j for i, j in _ if i == 1][0] + 0.
         self.N_true = [j for i, j in _ if i == 0][0] + 0.
-        self.shape = self.Y_true+self.N_true, len(df.columns)
+        self.shape = self.Y_true + self.N_true, len(df.columns)
         self.df2array = lambda df: np.array(df.collect())[0]
+
     def distinct_count(self):
         _array = self.df2array(self.df.select([countDistinct(i).name('_' + i) for i in self.features_name]))
         return self.df.select([i for i, j in zip(self.features_name, _array) if j != 1] + self.id_label)
 
     def na_prop(self, thresh=0.9):
         _count = self.shape[0]
-        _array = self.df2array(self.df.select([(1-count(i)/_count).name('_' + i) for i in self.features_name]))
+        _array = self.df2array(self.df.select([(1 - count(i) / _count).name('_' + i) for i in self.features_name]))
         return self.df.select([i for i, j in zip(self.features_name, _array) if j < thresh] + self.id_label)
 
     def iv(self, thresh=0.1):
-        y_i = ["sum({label}) OVER(PARTITION BY {feature}) as y_i_{feature}".format(label=self.id_label[1], feature=i) for i in self.features_name]
-        n_i = ["sum(1-{label}) OVER(PARTITION BY {feature}) as n_i_{feature}".format(label=self.id_label[1], feature=i) for i in self.features_name]
+        y_i = ["sum({label}) OVER(PARTITION BY {feature}) as y_i_{feature}".format(label=self.id_label[1], feature=i)
+               for i in self.features_name]
+        n_i = ["sum(1-{label}) OVER(PARTITION BY {feature}) as n_i_{feature}".format(label=self.id_label[1], feature=i)
+               for i in self.features_name]
         iv = ["sum((y_i_{colname}/{Y_true}-n_i_{colname}/{N_true})*log(y_i_{colname}/(n_i_{colname}+0.0001)/{y_n})) as iv_{colname}" \
-                .format(colname=i, Y_true=self.Y_true, N_true=self.N_true, y_n=self.Y_true/self.N_true) for i in self.features_name]
+                  .format(colname=i, Y_true=self.Y_true, N_true=self.N_true, y_n=self.Y_true / self.N_true) for i in self.features_name]
         _array = self.df2array(self.df.selectExpr(y_i + n_i).drop_duplicates().selectExpr(iv))
-        from pprint import pprint
-        _ls = list(zip(self.features_name, _array))
-        print(_ls)
+        print(_array)
         return self.df.select([i for i, j in zip(self.features_name, _array) if j > thresh] + self.id_label)
 ```
