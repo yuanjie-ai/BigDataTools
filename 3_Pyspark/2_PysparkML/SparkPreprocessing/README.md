@@ -27,6 +27,8 @@ class SparkPreprocessing(object):
         iv = ["sum((y_i_{colname}/{Y_true}-n_i_{colname}/{N_true})*log(y_i_{colname}/(n_i_{colname}+0.0001)/{y_n})) as iv_{colname}" \
                   .format(colname=i, Y_true=self.Y_true, N_true=self.N_true, y_n=self.Y_true / self.N_true) for i in self.features_name]
         _array = self.df2array(self.df.selectExpr(y_i + n_i).drop_duplicates().selectExpr(iv))
-        print(_array)
-        return self.df.select([i for i, j in zip(self.features_name, _array) if j > thresh] + self.id_label)
+        _zip = sorted(zip(_array, self.features_name), reverse=True)
+        from pprint import pprint
+        pprint(_zip)
+        return self.df.select([j for i, j in _zip if i > thresh] + self.id_label)
 ```
