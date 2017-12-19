@@ -1,3 +1,4 @@
+## 预处理模块
 ```python
 class SparkPreprocessing(object):
     def __init__(self, df, _id='id', _label='label'):
@@ -31,4 +32,15 @@ class SparkPreprocessing(object):
         from pprint import pprint
         pprint(_zip)
         return self.df.select([j for i, j in _zip if i > thresh] + self.id_label)
+
+    @classmethod
+    def pipline_preprocessing(cls, df, _id='id', _label='label'):
+        _df = cls(df, _id=_id, _label=_label).distinct_count()
+        _df = cls(_df, _id=_id, _label=_label).na_prop(thresh=0.9)
+        _df = cls(_df, _id=_id, _label=_label).iv(thresh=0.1)
+        return _df
+```
+## 示例
+```python
+
 ```
