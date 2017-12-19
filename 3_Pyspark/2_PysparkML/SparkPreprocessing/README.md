@@ -1,13 +1,5 @@
 ## 预处理模块
 ```python
-# coding: utf-8
-__title__ = 'SparkPreprocessing'
-__author__ = 'JieYuan'
-__mtime__ = '2017/12/19'
-
-import numpy as np
-
-
 class SparkPreprocessing(object):
     def __init__(self, df, _id='id', _label='label'):
         self.df = df
