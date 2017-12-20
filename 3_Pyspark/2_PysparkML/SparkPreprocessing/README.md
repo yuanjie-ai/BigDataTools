@@ -23,14 +23,17 @@ class SparkPreprocessing(object):
         _count = cls.shape[0]
         _array = cls.df2array(cls.df.select([(1 - count(i) / _count).name('_' + i) for i in col1]))
         col2 = [i for i, j in zip(col1, _array) if j < na_prop_thresh]
-        cls.df = cls.df.select(col2 + cls.id_label).withColumn('1_label', lit(1)-col(cls.id_label[1])).cache()
+        cls.df = cls.df.select(col2 + cls.id_label).withColumn('1_label', lit(1) - col(cls.id_label[1])).cache()
 
         # iv
-        y_i = col('sum(label)')
-        n_i = col('sum(1_label)')
+        _label_name = '%s' % cls.id_label[1]
+        _1_label_name = '1_' + _label_name
+        cls.df = cls.df.select(col2 + cls.id_label).withColumn(_1_label_name, lit(1) - col(_label_name)).cache()
+        y_i = col('sum(%s)' % _label_name)
+        n_i = col('sum(%s)' % _1_label_name)
         ls = []
         for i in cls.features_name:
-            df_temp = cls.df.groupBy(i).agg({'label': 'sum', '1_label': 'sum'}) \
+            df_temp = cls.df.groupBy(i).agg({_label_name: 'sum', _1_label_name: 'sum'}) \
                 .agg(sum((y_i / cls.Y_true - n_i / cls.N_true) * log((y_i + lit(0.0001)) / (n_i + lit(0.0001)) / (cls.Y_true / cls.N_true))))
             ls.append((cls.df2array(df_temp), i))
         from pprint import pprint
@@ -59,12 +62,14 @@ class SparkPreprocessing(object):
         return self.df.select([i for i, j in zip(self.features_name, _array) if j < thresh] + self.id_label)
 
     def iv(self, thresh=0.1):
-        self.df = self.df.withColumn('1_label', lit(1)-col('label'))
+        _label_name = '%s' % self.id_label[1]
+        _1_label_name = '1_' + _label_name
+        self.df = self.df.withColumn(_1_label_name, lit(1)-col(_label_name))
         ls=[]
+        y_i = col('sum(%s)' % _label_name)
+        n_i = col('sum(%s)' % _1_label_name)
         for i in self.features_name:
-            y_i = col('sum(label)')
-            n_i = col('sum(1_label)')
-            df_temp = self.df.groupBy(i).agg({'label': 'sum', '1_label': 'sum'}) \
+            df_temp = self.df.groupBy(i).agg({_label_name: 'sum', _1_label_name: 'sum'}) \
             .agg(sum((y_i/self.Y_true - n_i/self.N_true)*log((y_i+lit(0.0001))/(n_i+lit(0.0001))/(self.Y_true/self.N_true))))
             ls.append((self.df2array(df_temp), i))
         from pprint import pprint
