@@ -10,35 +10,45 @@ class SparkPreprocessing(object):
         self.N_true = [j for i, j in __array if i == 0][0] + 0.
         self.shape = self.Y_true + self.N_true, len(df.columns)
         self.df2array = lambda df: np.array(df.collect())[0]
-        
+
     @classmethod
     def pipline(cls, df, na_prop_thresh=0.9, iv_thresh=0.1, _id='id', _label='label'):
         cls = cls(df, _id=_id, _label=_label)
         # distinct_count
         _array = cls.df2array(cls.df.select([countDistinct(i).name('_' + i) for i in cls.features_name]))
         col1 = [i for i, j in zip(cls.features_name, _array) if j != 1]
-        cls.df = cls.df.select(col1 + cls.id_label)
+        cls.df = cls.df.select(col1 + cls.id_label).cache()
 
         # na_prop
         _count = cls.shape[0]
         _array = cls.df2array(cls.df.select([(1 - count(i) / _count).name('_' + i) for i in col1]))
         col2 = [i for i, j in zip(col1, _array) if j < na_prop_thresh]
-        cls.df = cls.df.select(col2 + cls.id_label)
+        cls.df = cls.df.select(col2 + cls.id_label).withColumn('1_label', lit(1)-col(cls.id_label[1])).cache()
 
         # iv
-        y_i = ["sum({label}) OVER(PARTITION BY {feature}) as y_i_{feature}".format(label=cls.id_label[1], feature=i)
-               for i in col2]
-        n_i = ["sum(1-{label}) OVER(PARTITION BY {feature}) as n_i_{feature}".format(label=cls.id_label[1], feature=i)
-               for i in col2]
-        iv = [
-            "sum((y_i_{colname}/{Y_true}-n_i_{colname}/{N_true})*log(y_i_{colname}/(n_i_{colname}+0.0001)/{y_n})) as iv_{colname}" \
-                .format(colname=i, Y_true=cls.Y_true, N_true=cls.N_true, y_n=cls.Y_true / cls.N_true) for i in col2]
-        _array = cls.df2array(cls.df.selectExpr(y_i + n_i).drop_duplicates().selectExpr(iv))
-        _zip = sorted(zip(_array, col2), reverse=True)
+        y_i = col('sum(label)')
+        n_i = col('sum(1_label)')
+        ls = []
+        for i in cls.features_name:
+            df_temp = cls.df.groupBy(i).agg({'label': 'sum', '1_label': 'sum'}) \
+                .agg(sum((y_i / cls.Y_true - n_i / cls.N_true) * log((y_i + lit(0.0001)) / (n_i + lit(0.0001)) / (cls.Y_true / cls.N_true))))
+            ls.append((cls.df2array(df_temp), i))
         from pprint import pprint
-        pprint(_zip)
-        return cls.df.select([j for i, j in _zip if i > iv_thresh] + cls.id_label)
-    
+        pprint(sorted(ls, reverse=True))
+        return cls.df.select([j for i, j in ls if i > iv_thresh] + cls.id_label)
+
+    @staticmethod
+    def fillna(df):
+        '''
+        :param df:
+        :return: 具体项目具体分析
+        '''
+        numCol1 = [i for i in df.columns if re.search('\d+m|\d*days', i)] + ['score'] # fill 0
+        numCol2 = [] # fill -999
+        numCol = numCol1 + numCol2
+        _numCol = [col(i).astype(FloatType()).name('_' + i) for i in numCol]
+        return df.drop(*numCol).select('*', *_numCol).fillna(-999, numCol2).fillna('_NA').fillna(0)
+
     def distinct_count(self):
         _array = self.df2array(self.df.select([countDistinct(i).name('_' + i) for i in self.features_name]))
         return self.df.select([i for i, j in zip(self.features_name, _array) if j != 1] + self.id_label)
@@ -49,16 +59,16 @@ class SparkPreprocessing(object):
         return self.df.select([i for i, j in zip(self.features_name, _array) if j < thresh] + self.id_label)
 
     def iv(self, thresh=0.1):
-        y_i = ["sum({label}) OVER(PARTITION BY {feature}) as y_i_{feature}".format(label=self.id_label[1], feature=i)
-               for i in self.features_name]
-        n_i = ["sum(1-{label}) OVER(PARTITION BY {feature}) as n_i_{feature}".format(label=self.id_label[1], feature=i)
-               for i in self.features_name]
-        iv = ["sum((y_i_{colname}/{Y_true}-n_i_{colname}/{N_true})*log(y_i_{colname}/(n_i_{colname}+0.0001)/{y_n})) as iv_{colname}" \
-                  .format(colname=i, Y_true=self.Y_true, N_true=self.N_true, y_n=self.Y_true / self.N_true) for i in self.features_name]
-        _array = self.df2array(self.df.selectExpr(y_i + n_i).drop_duplicates().selectExpr(iv))
-        _zip = sorted(zip(_array, self.features_name), reverse=True)
+        self.df = self.df.withColumn('1_label', lit(1)-col('label'))
+        ls=[]
+        for i in self.features_name:
+            y_i = col('sum(label)')
+            n_i = col('sum(1_label)')
+            df_temp = self.df.groupBy(i).agg({'label': 'sum', '1_label': 'sum'}) \
+            .agg(sum((y_i/self.Y_true - n_i/self.N_true)*log((y_i+lit(0.0001))/(n_i+lit(0.0001))/(self.Y_true/self.N_true))))
+            ls.append((self.df2array(df_temp), i))
         from pprint import pprint
-        pprint(_zip)
-        return self.df.select([j for i, j in _zip if i > thresh] + self.id_label)
+        pprint(sorted(ls, reverse=True))
+        return self.df.select([j for i, j in ls if i > thresh] + self.id_label)
 
 ```
