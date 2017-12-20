@@ -39,7 +39,7 @@ class SparkPreprocessing(object):
         for i in cls.features_name:
             df_temp = cls.df.groupBy(i).agg({_label_name: 'sum', _1_label_name: 'sum'}) \
                 .agg(sum((y_i / cls.Y_true - n_i / cls.N_true) * log((y_i + lit(0.0001)) / (n_i + lit(0.0001)) / (cls.Y_true / cls.N_true))))
-            ls.append((cls.df2array(df_temp), i))
+            ls.append((cls.df2array(df_temp)[0], i))
         from pprint import pprint
         pprint(sorted(ls, reverse=True))
         return cls.df.select([j for i, j in ls if i > iv_thresh] + cls.id_label)
@@ -84,8 +84,6 @@ class SparkPreprocessing(object):
         from pprint import pprint
         pprint(sorted(ls, reverse=True))
         return self.df.select([j for i, j in ls if i > thresh] + self.id_label)
-
-
 ```
 
 ## 简化（效率差一点）
@@ -144,9 +142,10 @@ class SparkPreprocessing(object):
         for i in self.features_name:
             df_temp = self.df.groupBy(i).agg({_label_name: 'sum', _1_label_name: 'sum'}) \
             .agg(sum((y_i/self.Y_true - n_i/self.N_true)*log((y_i+lit(0.0001))/(n_i+lit(0.0001))/(self.Y_true/self.N_true))))
-            ls.append((self.df2array(df_temp), i))
+            ls.append((self.df2array(df_temp)[0], i))
         from pprint import pprint
         pprint(sorted(ls, reverse=True))
         return self.df.select([j for i, j in ls if i > thresh] + self.id_label)
+        
 
 ```
