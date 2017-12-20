@@ -15,15 +15,19 @@ class SparkPreprocessing(object):
     def pipline(cls, df, na_prop_thresh=0.9, iv_thresh=0.1, _id='id', _label='label'):
         cls = cls(df, _id=_id, _label=_label)
         # distinct_count
-        _array = cls.df2array(cls.df.select([countDistinct(i).name('_' + i) for i in cls.features_name]))
-        col1 = [i for i, j in zip(cls.features_name, _array) if j != 1]
-        cls.df = cls.df.select(col1 + cls.id_label).cache()
+        # _array = cls.df2array(cls.df.select([countDistinct(i).name('_' + i) for i in cls.features_name]))
+        # col1 = [i for i, j in zip(cls.features_name, _array) if j != 1]
+        ls = []
+        for i in cls.features_name:
+            ls.append((cls.df.select(i).distinct().count(), i))
+        col1 = [j for i, j in ls if i != 1] + cls.id_label
+        cls.df = cls.df.select(col1).cache()
 
         # na_prop
         _count = cls.shape[0]
         _array = cls.df2array(cls.df.select([(1 - count(i) / _count).name('_' + i) for i in col1]))
-        col2 = [i for i, j in zip(col1, _array) if j < na_prop_thresh]
-        cls.df = cls.df.select(col2 + cls.id_label).withColumn('1_label', lit(1) - col(cls.id_label[1])).cache()
+        col2 = [i for i, j in zip(col1, _array) if j < na_prop_thresh] + cls.id_label
+        cls.df = cls.df.select(col2).withColumn('1_label', lit(1) - col(cls.id_label[1])).cache()
 
         # iv
         _label_name = '%s' % cls.id_label[1]
@@ -53,8 +57,13 @@ class SparkPreprocessing(object):
         return df.drop(*numCol).select('*', *_numCol).fillna(-999, numCol2).fillna('_NA').fillna(0)
 
     def distinct_count(self):
-        _array = self.df2array(self.df.select([countDistinct(i).name('_' + i) for i in self.features_name]))
-        return self.df.select([i for i, j in zip(self.features_name, _array) if j != 1] + self.id_label)
+        # countDistinct bug???
+        # _array = self.df2array(self.df.select([countDistinct(i).name('_' + i) for i in self.features_name]))
+        # return self.df.select([i for i, j in zip(self.features_name, _array) if j != 1] + self.id_label)
+        ls = []
+        for i in self.features_name:
+            ls.append((self.df.select(i).distinct().count(), i))
+        return self.df.select([j for i, j in ls if i != 1] + self.id_label)
 
     def na_prop(self, thresh=0.9):
         _count = self.shape[0]
@@ -76,16 +85,11 @@ class SparkPreprocessing(object):
         pprint(sorted(ls, reverse=True))
         return self.df.select([j for i, j in ls if i > thresh] + self.id_label)
 
+
 ```
 
 ## 简化（效率差一点）
 ```python
-# coding: utf-8
-__title__ = 'SparkPreprocessing'
-__author__ = 'JieYuan'
-__mtime__ = '2017/12/19'
-
-
 class SparkPreprocessing(object):
     def __init__(self, df, _id='id', _label='label'):
         self.df = df
@@ -117,8 +121,13 @@ class SparkPreprocessing(object):
         return df.drop(*numCol).select('*', *_numCol).fillna(-999, numCol2).fillna('_NA').fillna(0)
 
     def distinct_count(self):
-        _array = self.df2array(self.df.select([countDistinct(i).name('_' + i) for i in self.features_name]))
-        return self.df.select([i for i, j in zip(self.features_name, _array) if j != 1] + self.id_label)
+        # countDistinct bug???
+        # _array = self.df2array(self.df.select([countDistinct(i).name('_' + i) for i in self.features_name]))
+        # return self.df.select([i for i, j in zip(self.features_name, _array) if j != 1] + self.id_label)
+        ls = []
+        for i in self.features_name:
+            ls.append((self.df.select(i).distinct().count(), i))
+        return self.df.select([j for i, j in ls if i != 1] + self.id_label)
 
     def na_prop(self, thresh=0.9):
         _count = self.shape[0]
@@ -139,4 +148,5 @@ class SparkPreprocessing(object):
         from pprint import pprint
         pprint(sorted(ls, reverse=True))
         return self.df.select([j for i, j in ls if i > thresh] + self.id_label)
+
 ```
