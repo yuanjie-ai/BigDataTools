@@ -14,6 +14,7 @@ class SparkML(object):
         cls = cls(df, _id=_id, _label=_label)
         '''
         特征经过StringIndexer编码之后VectorAssembler会默认当初类别型特征，可通过改变StringIndexer编码后特征数据类型规避（精度下降）
+        double => float
         model.transform(df).select('acct_no', 'label', 'features').saveAsTable('fbidm.yuanjie_test', mode='overwrite')
         '''
         strCol = [i[0] for i in cls.df.dtypes if i[1] == 'string' and i[0] not in cls.id_label]
