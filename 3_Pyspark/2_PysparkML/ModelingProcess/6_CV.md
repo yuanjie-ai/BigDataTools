@@ -7,7 +7,7 @@ from pyspark.ml.classification import RandomForestClassifier
 from pyspark.ml.tuning import ParamGridBuilder, CrossValidator
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
 
-clf = RandomForestClassifier()
+clf = RandomForestClassifier(subsamplingRate=0.8)
 grid = ParamGridBuilder().addGrid(clf.maxDepth, [8]) \
                          .addGrid(clf.impurity, ["gini"]) \
                          .addGrid(clf.numTrees, [100, 200, 500]) \
