@@ -37,5 +37,4 @@ df = spark.table('fbidm.yuanjie_train_data')
 model = SparkML.vector_assembler(df, _id='acct_no').fit(df)
 model.write().overwrite().save('/user/fbidm/modelresult/vector_assembler_%s.model' % deploy_date)
 model.transform(df).select('acct_no', 'label', 'features').saveAsTable('fbidm.yuanjie_train_data_%s' % deploy_date, mode='overwrite')
-
 ```
