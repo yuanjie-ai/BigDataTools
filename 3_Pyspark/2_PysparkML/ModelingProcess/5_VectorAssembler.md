@@ -2,6 +2,10 @@
 
 ---
 ```python
+from pyspark.ml import Pipeline
+from pyspark.ml.feature import StringIndexer
+from pyspark.ml.feature import VectorAssembler
+
 class SparkML(object):
 
     def __init__(self, df, _id='id', _label='label'):
