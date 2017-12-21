@@ -4,10 +4,9 @@
 ```python
 
 class SparkML(object):
-    def __init__(self, df, _id, _label, path):
+    def __init__(self, df, _id, _label):
         self.df = df
         self.id_label = [_id, _label]
-        self.path = path
 
     @classmethod
     def vector_assembler(cls, df, _id='id', _label='label', path='/user/fbidm/modelresult/vector_assembler.model'):
@@ -24,8 +23,8 @@ class SparkML(object):
                                           outputCol='features')
         stages = str2num_ls + [vectorAssembler]
         model = Pipeline(stages=stages).fit(df.cache())
-        model.write().overwrite().save(cls.path)
-        print("Save Model Path: " + cls.path)
+        model.write().overwrite().save(path)
+        print("Save Model Path: " + path)
         # model = PipelineModel.load('test.model')
         return model
 
@@ -39,7 +38,7 @@ class SparkML(object):
 ```
 deploy_date = '20180108'
 df = spark.table('fbidm.yuanjie_train_data')
-model = SparkML.vector_assembler(df, _id='acct_no', _label='label', path='/user/fbidm/modelresult/vector_assembler.model')
+model = SparkML.vector_assembler(df, _id='acct_no', _label='label', path='/user/fbidm/modelresult/vector_assembler_%s.model'  %deploy_date)
 df = model.transform(df).select('acct_no', 'label', 'features')
 df.write.saveAsTable('fbidm.yuanjie_train_data_%s' % deploy_date, mode='overwrite')
 ```
