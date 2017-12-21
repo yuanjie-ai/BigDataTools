@@ -28,6 +28,8 @@ class SparkML(object):
         stages = str2num_ls + [vectorAssembler]
         return Pipeline(stages=stages)
 ```
+---
+
 ## 实例
 ```
 deploy_date = '20180108'
