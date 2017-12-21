@@ -36,7 +36,7 @@ class SparkML(object):
 ```
 deploy_date = '20180108'
 df = spark.table('fbidm.yuanjie_train_data')
-model = SparkML.vector_assembler(df, _id='id', _label='label', path='/user/fbidm/modelresult/vector_assembler.model')
-model.transform(df).select('acct_no', 'label', 'features') \
-.write.saveAsTable('fbidm.yuanjie_train_data_%s' % deploy_date, mode='overwrite')
+model = SparkML.vector_assembler(df, _id='acct_no', _label='label', path='/user/fbidm/modelresult/vector_assembler.model')
+df = model.transform(df).select('acct_no', 'label', 'features') \
+df.write.saveAsTable('fbidm.yuanjie_train_data_%s' % deploy_date, mode='overwrite')
 ```
