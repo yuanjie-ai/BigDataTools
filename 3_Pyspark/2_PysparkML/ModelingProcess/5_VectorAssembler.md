@@ -24,7 +24,7 @@ class SparkML(object):
         stages = str2num_ls + [vectorAssembler]
         model = Pipeline(stages=stages).fit(df.cache())
         model.write().overwrite().save(path)
-        print("Save Model Path: " + path)
+        print("Save Model Path: %s /n" % path)
         # model = PipelineModel.load('test.model')
         return model
 
