@@ -15,7 +15,7 @@ grid = ParamGridBuilder().addGrid(clf.maxBins, [32]) \
                          .build()
 evaluator = BinaryClassificationEvaluator(metricName='areaUnderROC')
 
-CV = CrossValidator(estimator=clf, estimatorParamMaps=grid, evaluator=evaluator, numFolds=3, seed=0)
+cv = CrossValidator(estimator=clf, estimatorParamMaps=grid, evaluator=evaluator, numFolds=3, seed=0)
 cvModel = cv.fit(df.cache())
 print(cvModel.avgMetrics[0])
 ```
