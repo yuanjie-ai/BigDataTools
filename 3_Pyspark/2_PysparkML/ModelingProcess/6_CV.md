@@ -20,6 +20,6 @@ evaluator = BinaryClassificationEvaluator(metricName='areaUnderROC')
 cv = CrossValidator(estimator=clf, estimatorParamMaps=grid, evaluator=evaluator, numFolds=3, seed=0)
 cvModel = cv.fit(df)
 deploy_date = '20180108'
-cvModel.bestModel.write().overwrite().save('/user/fbidm/modelresult/cvModel_%s.model' % deploy_date)
+cvModel.bestModel.write().overwrite().save('/user/fbidm/modelresult/model_%s.model' % deploy_date)
 print(cvModel.avgMetrics)
 ```
