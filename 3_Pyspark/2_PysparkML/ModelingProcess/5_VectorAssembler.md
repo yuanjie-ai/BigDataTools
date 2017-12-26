@@ -3,8 +3,6 @@
 ---
 ```python
 
-from pyspark.ml import Pipeline, PipelineModel
-from pyspark.ml.feature import StringIndexer
 from pyspark.ml.feature import VectorAssembler
 
 class SparkML(object):
@@ -13,24 +11,18 @@ class SparkML(object):
         self.id_label = [_id, _label]
 
     @classmethod
-    def vector_assembler(cls, df, _id='id', _label='label', path='/user/fbidm/modelresult/vector_assembler.model'):
+    def vector_assembler_hash_coding(cls, df, _id='id', _label='label', strColName=None):
         cls = cls(df, _id=_id, _label=_label)
-        '''
-        特征经过StringIndexer编码之后VectorAssembler会默认当初类别型特征，可通过改变StringIndexer编码后特征数据类型规避（精度下降）
-        double => float
-        model.transform(df).select('acct_no', 'label', 'features').saveAsTable('fbidm.yuanjie_test', mode='overwrite')
-        '''
-        strCol = [i[0] for i in cls.df.dtypes if i[1] == 'string' and i[0] not in cls.id_label]
-        str2num_ls = [StringIndexer(inputCol=i, outputCol="_" + i, handleInvalid='skip') for i in strCol]
-        numCol = [i for i in cls.df.columns + ['_' + i for i in strCol] if i not in cls.id_label + strCol]
-        vectorAssembler = VectorAssembler(inputCols=numCol,
-                                          outputCol='features')
-        stages = str2num_ls + [vectorAssembler]
-        model = Pipeline(stages=stages).fit(df.cache())
-        model.write().overwrite().save(path)
-        print("Save Model Path: %s \n" % path)
-        # model = PipelineModel.load('test.model')
-        return model
+        for i in strColName:
+            df = df.withColumn(i, hash(i))
+
+        numCol = [i for i in cls.df.columns if i not in cls.id_label]
+        vectorAssembler = VectorAssembler(inputCols=numCol, outputCol='features')
+        if _label:
+            df = vectorAssembler.transform(df).select(_id, _label, 'features')
+        else:
+            df = vectorAssembler.transform(df).select(_id, 'features')
+        return df
 
     def cv(self):
         pass
