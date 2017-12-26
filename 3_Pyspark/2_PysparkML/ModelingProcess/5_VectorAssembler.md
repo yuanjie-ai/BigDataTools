@@ -11,7 +11,7 @@ class SparkML(object):
         self.id_label = [_id, _label]
 
     @classmethod
-    def vector_assembler_hash_coding(cls, df, _id='id', _label='label', strColName=None):
+    def vector_assembler_hash_coding(cls, df, _id='id', _label='label'):
         cls = cls(df, _id=_id, _label=_label)
         strColName = [i for i, j in cls.df.dtypes if j == 'string' and i not in cls.id_label]
         for i in strColName:
