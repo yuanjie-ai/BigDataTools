@@ -17,6 +17,9 @@ class SparkML(object):
         for i in strColName:
             cls.df = cls.df.withColumn(i, hash(i))
 
+        print([i for i, j in cls.df.dtypes if j == 'string'])
+        print(len([i for i, j in cls.df.dtypes if j == 'string']))
+
         numCol = [i for i in cls.df.columns if i not in cls.id_label]
         vectorAssembler = VectorAssembler(inputCols=numCol, outputCol='features')
         if _label:
