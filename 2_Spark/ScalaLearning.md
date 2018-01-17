@@ -12,6 +12,12 @@ if(布尔表达式){
 ```
 ---
 ## 函数
+```scala
+def functionName ([参数列表]) : [return type] = {
+   function body
+   return [expr]
+}
+```
 - 匿名函数
 ```scala
 var f = (x:Int) => x + 1
