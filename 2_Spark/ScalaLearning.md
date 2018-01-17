@@ -24,12 +24,12 @@ var f = (x:Int) => x + 1
 ```
 - 可变参数
 ```scala
-def printStrings(args: String*) = {
-  var i: Int = 0
-  for (arg <- args) {
-    println("Arg value[" + i + "] = " + arg)
-    i = i + 1
+def addInt(a: Int*): Int = {
+  var l = 0
+  for (i <- a) {
+    l = l + i
   }
+  return l
 }
 ```
 
