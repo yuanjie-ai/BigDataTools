@@ -24,7 +24,9 @@ var f = (x:Int) => x + 1
 ```
 - 简化函数
 ```scala
+// 定义超类
 def f[A](x: A) = "[" + x.toString() + "]"
+def f[String](x: String) = "[" + x.toString() + "]"
 ```
 - 可变参数函数
 ```scala
