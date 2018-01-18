@@ -56,7 +56,7 @@ import java.util.Date
 object Test {
    def main(args: Array[String]) {
       val date = new Date
-      val logWithDateBound = log(date, _ : String) // 相当于函数赋值生成新函数
+      val logWithDateBound = log(date, _ : String) // 绑定第一个date参数，第二个参数使用下划线(_)替换缺失的参数列表，并把这个新的函数值的索引的赋给变量
 
       logWithDateBound("message1" )
       Thread.sleep(1000)
