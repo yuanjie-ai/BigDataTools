@@ -88,6 +88,13 @@ object Test {
 }
 ```
 
+- 函数柯里化
+> 柯里化(Currying)指的是将原来接受两个参数的函数变成新的接受一个参数的函数的过程。新的函数返回一个以原有第二个参数为参数的函数。
+```scala
+def add1(x: Int, y: Int) = x + y
+def add2(x: Int)(y: Int) = x + y // 函数柯里化
+```
+
 
 ---
 [1]: http://blog.csdn.net/bobozhengsir/article/details/13023023
