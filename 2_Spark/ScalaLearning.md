@@ -48,6 +48,28 @@ def factorial(n: BigInt): BigInt = {
     n * factorial(n - 1)
 }
 ```
+
+- 偏应用函数
+```scala
+import java.util.Date
+
+object Test {
+   def main(args: Array[String]) {
+      val date = new Date
+      val logWithDateBound = log(date, _ : String) // 相当于函数赋值生成新函数
+
+      logWithDateBound("message1" )
+      Thread.sleep(1000)
+      logWithDateBound("message2" )
+      Thread.sleep(1000)
+      logWithDateBound("message3" )
+   }
+
+   def log(date: Date, message: String)  = {
+     println(date + "----" + message)
+   }
+}
+```
 - 高阶函数
 ```scala
 object Test {
