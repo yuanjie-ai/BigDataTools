@@ -1,4 +1,4 @@
-## 字符串
+## [字符串][1]
 ```scala
 object Test {
    def main(args: Array[String]) {
@@ -9,8 +9,6 @@ object Test {
    }
 }
 ```
-- length()
-- concat()/+
 - 字符串格式化
 ```scala
 object Test {
@@ -26,3 +24,11 @@ object Test {
   }
 }
 ```
+- length()
+- concat()/+
+- trim(): 删除指定字符串的首尾空白符
+
+
+
+---
+[1]: http://www.yiibai.com/scala/scala_strings.html
