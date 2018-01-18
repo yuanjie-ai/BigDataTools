@@ -9,6 +9,7 @@ if(布尔表达式){
 }else{
    // 如果布尔表达式为 false 则执行该语句块
 }
+
 ```
 ---
 ## 函数
@@ -36,6 +37,15 @@ def addInt(a: Int*): Int = {
     l = l + i
   }
   return l
+}
+```
+- 递归函数
+```scala
+def factorial(n: BigInt): BigInt = {
+  if (n <= 1)
+    1
+  else
+    n * factorial(n - 1)
 }
 ```
 - 高阶函数
