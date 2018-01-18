@@ -26,7 +26,7 @@ var f = (x:Int) => x + 1
 - 简化函数
 ```scala
 def add(x: Int, y: Int) = x + y
-// 定义超类
+// 定义超类型
 def f[A](x: A) = "[" + x.toString() + "]"
 def f[String](x: String) = "[" + x.toString() + "]"
 ```
