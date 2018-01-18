@@ -95,7 +95,18 @@ object Test {
 def add1(x: Int, y: Int) = x + y
 def add2(x: Int)(y: Int) = x + y // 函数柯里化
 ```
-
+---
+## 字符串
+```scala
+object Test {
+   def main(args: Array[String]) {
+      val buf = new StringBuilder; // String对象是不可变的, StringBuilder可变
+      buf += 'a'
+      buf ++= "bcdef"
+      println( "buf is : " + buf.toString );
+   }
+}
+```
 
 ---
 [1]: http://blog.csdn.net/bobozhengsir/article/details/13023023
