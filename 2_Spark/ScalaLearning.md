@@ -21,6 +21,7 @@ def functionName ([参数列表]) : [return type] = {
 ```
 - 匿名函数
 ```scala
+// f = lambda x: x + 1
 var f = (x:Int) => x + 1
 ```
 - 简化函数
