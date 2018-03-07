@@ -10,8 +10,11 @@
 - [MongoDB][8]
 
 
-
-
+---
+## pd.DataFrame()入库NaN要转成None
+```python
+df.where(df.notnull(), None)
+```
 
 
 
