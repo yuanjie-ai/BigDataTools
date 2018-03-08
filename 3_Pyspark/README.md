@@ -6,6 +6,9 @@
 arrayToVector = udf(lambda x: Vectors.dense(x), VectorUDT())
 vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 ```
+## Tools
+- [spark-df-profiling][5]
+
 ---
 ## [常用操作][11]
 - [数据重塑][13]
@@ -17,22 +20,11 @@ vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 - [聚合函数][2]
 - [窗口函数][3]
 - [自定义函数][4]
+
 ---
 ## 常用算法
 - [ALS][21]
 - [FPGrowth][22]
-
-:ant:
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -53,4 +45,5 @@ vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 [2]: http://blog.csdn.net/skywalker_only/article/details/38823387
 [3]: https://github.com/Jie-Yuan/3_PythonLearning/blob/master/5_Spark-Hive_UDFs/WindowFunctions.md
 [4]: https://github.com/Jie-Yuan/3_PythonLearning/tree/master/5_Spark-Hive_UDFs
+[5]: https://github.com/julioasotodv/spark-df-profiling
 
