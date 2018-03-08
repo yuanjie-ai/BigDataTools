@@ -8,7 +8,7 @@ vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 ```
 ## Tools
 - [spark-df-profiling][5]
-
+- [spark-sklearn][6]
 ---
 ## [常用操作][11]
 - [数据重塑][13]
@@ -46,4 +46,5 @@ vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 [3]: https://github.com/Jie-Yuan/3_PythonLearning/blob/master/5_Spark-Hive_UDFs/WindowFunctions.md
 [4]: https://github.com/Jie-Yuan/3_PythonLearning/tree/master/5_Spark-Hive_UDFs
 [5]: https://github.com/julioasotodv/spark-df-profiling
+[6]: https://github.com/databricks/spark-sklearn
 
