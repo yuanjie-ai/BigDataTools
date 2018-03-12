@@ -29,6 +29,9 @@ DQL：数据库查询语言，关键字：select
 
 # 常用
 ```
+LATERAL VIEW udtf(expression) tableAlias AS columnAlias
+SELECT table.*, tableAlias.columnAlias FROM table LATERAL VIEW explode('_1') tableAlias AS columnAlias # table->tableAlias虚表
+
 DROP TABLE IF EXISTS fbidm.yuanjie_test;
 CREATE TABLE IF NOT EXISTS fbidm.yuanjie_test
 TRUNCATE TABLE tablename;
