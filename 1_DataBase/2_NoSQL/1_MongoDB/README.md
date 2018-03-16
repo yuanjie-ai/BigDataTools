@@ -1,10 +1,9 @@
 <h1 align = "center">:rocket: MongoDB :facepunch:</h1>
 
 ---
-
 - pymongo
 
-````python
+```python
 import pymongo
 import sys
 import traceback    
