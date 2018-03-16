@@ -19,11 +19,17 @@ os.environ['SPARK_HOME'] = "/opt/BigData/spark"
 ## You might need to enter your local IP
 # os.environ['SPARK_LOCAL_IP']="192.168.2.138"
 
-# Init
+## remote
+# spark = SparkSession.builder \
+#     .appName("Yuanjie") \
+#     .config('log4j.rootCategory', "WARN") \
+#     .enableHiveSupport() \
+#     .getOrCreate()
+
+## local
 spark = SparkSession.builder \
+    .master("local") \
     .appName("Yuanjie") \
-    .config('log4j.rootCategory', "WARN") \
-    .enableHiveSupport() \
     .getOrCreate()
 
 sc = spark.sparkContext
