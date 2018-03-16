@@ -1,7 +1,6 @@
-[<h1 align = "center">:rocket: Facets :facepunch:</h1>][1]
+<h1 align = "center">:rocket: MongoDB :facepunch:</h1>
 
 ---
-## 1. Enabling Usage in Jupyter Notebooks
 
 - pymongo
 
