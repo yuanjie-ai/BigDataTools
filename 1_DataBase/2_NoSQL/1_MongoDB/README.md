@@ -1,4 +1,4 @@
-[<h1 align = "center">:rocket: Facets :facepunch:</h1>][1]
+[<h1 align = "center">:rocket: MongoDB :facepunch:</h1>][1]
 
 ---
 
@@ -62,8 +62,5 @@ for k in res:
 
 
 
-
-1
-
 ---
-[1]: http://www.runoob.com/mongodb/mongodb-tutorial.html
+ [1]: http://www.runoob.com/mongodb/mongodb-tutorial.html
