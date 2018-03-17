@@ -1,6 +1,12 @@
 <h1 align = "center">:rocket: PySpark :facepunch:</h1>
 
 ---
+https://github.com/jadianes/spark-py-notebooks
+
+https://github.com/awantik/pyspark-tutorial
+
+https://github.com/XD-DENG/Spark-practice
+---
 ```python
 # Array、Vector互转
 arrayToVector = udf(lambda x: Vectors.dense(x), VectorUDT())
