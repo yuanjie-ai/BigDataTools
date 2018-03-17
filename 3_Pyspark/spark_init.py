@@ -10,6 +10,7 @@ from pyspark.sql.types import *
 from pyspark.sql.functions import *
 
 # Path for spark source folder
+os.environ["PYSPARK_PYTHON"]="/algor/yuanjie/intel/intelpython3/bin/python"
 os.environ['SPARK_HOME'] = "/opt/BigData/spark"
 
 # # Path for pyspark and py4j
