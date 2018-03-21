@@ -5,39 +5,37 @@ __author__ = 'JieYuan'
 __mtime__ = '2018/3/16'
 """
 import os
+import sys
 from pyspark.sql import *
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
 
-# Path for spark source folder
-os.environ["PYSPARK_PYTHON"]="/algor/yuanjie/intel/intelpython3/bin/python"
-os.environ['SPARK_HOME'] = "/opt/BigData/spark"
 
-# # Path for pyspark and py4j
-# sys.path.append("/opt/BigData/spark/python")
-# sys.path.append("/opt/BigData/spark/python/lib/py4j-0.10.4-src.zip")
-
-## You might need to enter your local IP
-# os.environ['SPARK_LOCAL_IP']="192.168.2.138"
-
-## remote
-# spark = SparkSession.builder \
-#     .appName("Yuanjie") \
-#     .config('log4j.rootCategory', "WARN") \
-#     .enableHiveSupport() \
-#     .getOrCreate()
-
-## local
-spark = SparkSession.builder \
-    .master("local") \
-    .appName("Yuanjie") \
-    .getOrCreate()
-
-sc = spark.sparkContext
 
 # 动态分区
 # spark.sql("set hive.exec.dynamic.partition.mode = nonstrict")
 
+
+class Spark:
+
+    def __init__(self, SPARK_HOME="/opt/BigData/spark" , py4j="py4j-0.10.4-src.zip"):
+        os.environ["SPARK_HOME"] = SPARK_HOME
+        os.environ["PYSPARK_PYTHON"] = os.popen('which python').read().strip()
+        sys.path.append("%s/python" % SPARK_HOME)
+        sys.path.append("%s/python/lib/%s" % (SPARK_HOME, py4j))
+
+    @property
+    def spark(self):
+        spark = SparkSession.builder \
+            .appName("Yuanjie") \
+            .config('log4j.rootCategory', "WARN") \
+            .enableHiveSupport() \
+            .getOrCreate()
+        return spark
+
+    @property
+    def sc(self):
+        return self.spark.sparkContext
 
 
 
