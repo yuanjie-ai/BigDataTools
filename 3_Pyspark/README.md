@@ -6,6 +6,8 @@ https://github.com/jadianes/spark-py-notebooks
 https://github.com/awantik/pyspark-tutorial
 
 https://github.com/XD-DENG/Spark-practice
+
+
 ---
 ```python
 # Array、Vector互转
@@ -24,6 +26,7 @@ vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 
 ---
 ## 常用函数
+- [Spark-Hive_UDFs][8]
 - [基础函数][1]
 - [聚合函数][2]
 - [窗口函数][3]
@@ -57,4 +60,4 @@ vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 [5]: https://github.com/julioasotodv/spark-df-profiling
 [6]: https://github.com/databricks/spark-sklearn
 [7]: https://github.com/ambodi/pyspark-twitter-stream-mining
-
+[8]: https://github.com/Jie-Yuan/PythonLearning/tree/master/5_Spark-Hive_UDFs
