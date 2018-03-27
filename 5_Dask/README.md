@@ -15,4 +15,15 @@ dd.from_pandas(my_df,npartitions=nCores).\
      lambda df : df.apply(\ 
          lambda x : nearest_street(x.lat,x.lon), axis=1)).\ 
      compute(get=get) 
+     
+     
+# ddf.map_overlap
+# ddf.map_partitions
+
+
+# ddf.persist
+# ddf.reduction
+
+# ddf.repartition ########### 改变线程
+# ddf.npartitions ########### 线程数
 ```
