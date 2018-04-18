@@ -53,11 +53,11 @@ vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 [21]: http://nbviewer.jupyter.org/github/Jie-Yuan/0_BigData/blob/master/3_Pyspark/2_PysparkML/ALS.ipynb
 [22]: https://github.com/Jie-Yuan/0_BigData/blob/master/3_Pyspark/2_PysparkML/FPGrowth.md
 
-[1]: https://github.com/Jie-Yuan/3_PythonLearning/blob/master/5_Spark-Hive_UDFs/CommonFunction.md
+[1]: https://github.com/Jie-Yuan/3_MyTools/blob/master/5_Spark-Hive_UDFs/CommonFunction.md
 [2]: http://blog.csdn.net/skywalker_only/article/details/38823387
-[3]: https://github.com/Jie-Yuan/3_PythonLearning/blob/master/5_Spark-Hive_UDFs/WindowFunctions.md
-[4]: https://github.com/Jie-Yuan/3_PythonLearning/tree/master/5_Spark-Hive_UDFs
+[3]: https://github.com/Jie-Yuan/3_MyTools/blob/master/5_Spark-Hive_UDFs/WindowFunctions.md
+[4]: https://github.com/Jie-Yuan/3_MyTools/tree/master/5_Spark-Hive_UDFs
 [5]: https://github.com/julioasotodv/spark-df-profiling
 [6]: https://github.com/databricks/spark-sklearn
 [7]: https://github.com/ambodi/pyspark-twitter-stream-mining
-[8]: https://github.com/Jie-Yuan/PythonLearning/tree/master/5_Spark-Hive_UDFs
+[8]: https://github.com/Jie-Yuan/MyTools/tree/master/5_Spark-Hive_UDFs
