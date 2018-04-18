@@ -60,4 +60,4 @@ vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 [5]: https://github.com/julioasotodv/spark-df-profiling
 [6]: https://github.com/databricks/spark-sklearn
 [7]: https://github.com/ambodi/pyspark-twitter-stream-mining
-[8]: https://github.com/Jie-Yuan/PythonLearning/tree/master/5_Spark-Hive_UDFs
+[8]: https://github.com/Jie-Yuan/MyTools/tree/master/5_Spark-Hive_UDFs
