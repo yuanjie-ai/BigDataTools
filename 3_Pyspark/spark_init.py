@@ -11,18 +11,21 @@ from pyspark.sql.types import *
 from pyspark.sql.functions import *
 
 
-
 # 动态分区
 # spark.sql("set hive.exec.dynamic.partition.mode = nonstrict")
 
 
 class Spark:
+    """
+    $SPARK_HOME/python/pyspark
+    $PYTHON_HOME/lib/python3.6/site-packages
+    """
 
-    def __init__(self, SPARK_HOME="/opt/BigData/spark" , py4j="py4j-0.10.4-src.zip"):
+    def __init__(self, SPARK_HOME="/opt/BigData/spark", PYSPARK_PYTHON="/ZC_DATA/miniconda3/bin/python", py4j="py4j-0.10.4-src.zip"):
         os.environ["SPARK_HOME"] = SPARK_HOME
-        os.environ["PYSPARK_PYTHON"] = os.popen('which python').read().strip()
+        os.environ["PYSPARK_PYTHON"] = PYSPARK_PYTHON
         sys.path.append("%s/python" % SPARK_HOME)
-        sys.path.append("%s/python/lib/%s" % (SPARK_HOME, py4j))
+        sys.path.append("%s/python/lib/%s" % (SPARK_HOME, py4j)) # 不设置好像也行
 
     @property
     def spark(self):
