@@ -25,7 +25,7 @@ vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 - [返回布尔型][12]
 
 ---
-## 常用函数
+## [常用函数][9]
 - [Spark-Hive_UDFs][8]
 - [基础函数][1]
 - [聚合函数][2]
@@ -61,3 +61,4 @@ vectorToArray = udf(lambda x: [float(i) for i in x], ArrayType(FloatType()))
 [6]: https://github.com/databricks/spark-sklearn
 [7]: https://github.com/ambodi/pyspark-twitter-stream-mining
 [8]: https://github.com/Jie-Yuan/MyTools/tree/master/5_Spark-Hive_UDFs
+[9]: https://github.com/Jie-Yuan/MyTools/blob/master/5_Spark-Hive_UDFs/CommonFunction.md
