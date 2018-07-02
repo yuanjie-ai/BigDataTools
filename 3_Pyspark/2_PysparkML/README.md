@@ -4,5 +4,5 @@
 
 ## Model Save
 ```python
-w2v.fit(df1).write().overwrite().save('/user/fbidm/modelresult/w2v_1.model')
+model.write().overwrite().save(file_path)
 ```
