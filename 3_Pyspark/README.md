@@ -1,6 +1,8 @@
 <h1 align = "center">:rocket: PySpark :facepunch:</h1>
 
 ---
+调优https://blog.csdn.net/qiuhui19941118/article/details/60608759
+
 https://github.com/jadianes/spark-py-notebooks
 
 https://github.com/awantik/pyspark-tutorial
