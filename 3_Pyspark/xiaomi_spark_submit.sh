@@ -6,9 +6,8 @@ QUEUE=development.miui_group.browser.browser_bigdata
 # $INFRA_CLIENT/bin/hdfs dfs -rm -r output
 # spark 2.x only
 spark-submit --cluster $CLUSTER_NAME \
-# --py-files *.zip/*.py \
 --queue $QUEUE \
-
+# --py-files *.zip/*.py \
 --master yarn-cluster \
 --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON='/opt/soft/anaconda2/bin/python'  \
 --conf spark.disable.stdout=false \
