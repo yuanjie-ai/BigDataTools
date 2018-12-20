@@ -2,6 +2,24 @@
 ---
 ### [Hive内置函数官方][2]
 ### General Info
+```
+五、日期函数... 18
+1. UNIX时间戳转日期函数: from_unixtime. 18
+2. 获取当前UNIX时间戳函数: unix_timestamp. 18
+3. 日期转UNIX时间戳函数: unix_timestamp. 18
+4. 指定格式日期转UNIX时间戳函数: unix_timestamp. 18
+5. 日期时间转日期函数: to_date. 19
+6. 日期转年函数: year. 19
+7. 日期转月函数: month. 19
+8. 日期转天函数: day. 19
+9. 日期转小时函数: hour. 20
+10. 日期转分钟函数: minute. 20
+11. 日期转秒函数: second. 20
+12. 日期转周函数: weekofyear. 20
+13. 日期比较函数: datediff 21
+14. 日期增加函数: date_add. 21
+15. 日期减少函数: date_sub. 21
+```
 
 For the latest information about Hive, please visit out website at:
 
