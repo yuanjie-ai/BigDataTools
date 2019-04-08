@@ -7,6 +7,8 @@
 
 - Jupyter
 ```
+https://www.datacamp.com/community/tutorials/apache-spark-python#PySpark
+https://www.datacamp.com/community/tutorials/apache-spark-python#PySpark
 PYSPARK_DRIVER_PYTHON_OPTS="notebook" pyspark
 ```
 ---
